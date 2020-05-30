@@ -5,7 +5,7 @@ email: "dominic@davis-foster.co.uk"
 version: "0.0.1"
 username: "domdfcoding"
 license: 'LGPLv3+'
-short_desc: 'Update multiple configuration files, build scripts etc. from a single location'
+short_desc: 'Framework for creating freedesktop-esque icon themes for wxPython.'
 
 enable_tests: False
 enable_conda: False
@@ -17,40 +17,12 @@ exclude_files:
   - setup
   - pkginfo
   - travis
-  - tox
   - bumpversion
-  - issue_templates
 
 python_deploy_version: 3.6
-
-additional_ignore:
-  # __init__.py files generated during build process
-  - adwaita/wx_icons_adwaita/Adwaita/**/__init__.py
-  - humanity/wx_icons_humanity/Humanity/**/__init__.py
-  - humanity/wx_icons_humanity/Humanity_Dark/**/__init__.py
-  - tango/wx_icons_tango/Tango/**/__init__.py
-  - hicolor/wx_icons_hicolor/Hicolor/**/__init__.py
-  - suru/wx_icons_suru/Suru/**/__init__.py
 
 # Versions to run tests for
 python_versions:
   - '3.6'
   - '3.7'
   - '3.8'
-#
-## travis secure password for PyPI
-##travis_pypi_secure:
-#
-## additional lines for MANIFEST.in
-#manifest_additional:
-#  - "recursive-include git_helper/templates *"
-#  - "recursive-include git_helper/init_repo_files *"
-#
-#classifiers:
-#  - 'Development Status :: 4 - Beta'
-##  - "Development Status :: 5 - Production/Stable"
-##  - "Development Status :: 6 - Mature"
-##  - "Development Status :: 7 - Inactive"
-#  - 'Intended Audience :: Developers'
-#  - 'Operating System :: OS Independent'
-#  - 'Topic :: Utilities'

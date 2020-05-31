@@ -335,9 +335,13 @@ def main(source_dir, dpis, output_dir, scalable_directories):
 					self.inside.append(self.SVG)
 					return
 			elif self.inside[-1] == self.SVG:
-				if (name == "g" and ('inkscape:groupmode' in attrs) and ('inkscape:label' in attrs)
-						and attrs['inkscape:groupmode'] == 'layer' and attrs['inkscape:label'].lower().startswith(
-								'baseplate')):
+				if all([
+						name == "g",
+						'inkscape:groupmode' in attrs,
+						'inkscape:label' in attrs,
+						attrs['inkscape:groupmode'] == 'layer',
+						attrs['inkscape:label'].lower().startswith('baseplate')
+					]):
 					self.stack.append(self.LAYER)
 					self.inside.append(self.LAYER)
 					self.context = None

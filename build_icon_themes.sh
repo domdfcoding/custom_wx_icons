@@ -31,7 +31,7 @@ do
   # Cleanup
   rm -rf dist
   rm -rf build
-  rm -rf *.egg-info
+  rm -rf -- *.egg-info
 
   cd ..
 done

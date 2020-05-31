@@ -35,14 +35,15 @@ import wx
 # end wxGlade
 
 
-ArtClients = ["wx.ART_TOOLBAR",
-              "wx.ART_MENU",
-              "wx.ART_FRAME_ICON",
-              "wx.ART_CMN_DIALOG",
-              "wx.ART_HELP_BROWSER",
-              "wx.ART_MESSAGE_BOX",
-              "wx.ART_OTHER",
-              ]
+ArtClients = {
+        "wx.ART_TOOLBAR": wx.ART_TOOLBAR,
+        "wx.ART_MENU": wx.ART_MENU,
+        "wx.ART_FRAME_ICON": wx.ART_FRAME_ICON,
+        "wx.ART_CMN_DIALOG": wx.ART_CMN_DIALOG,
+        "wx.ART_HELP_BROWSER": wx.ART_HELP_BROWSER,
+        "wx.ART_MESSAGE_BOX": wx.ART_MESSAGE_BOX,
+        "wx.ART_OTHER": wx.ART_OTHER,
+        }
 
 
 class IconWall(wx.Frame):
@@ -194,7 +195,7 @@ class IconWall(wx.Frame):
         # end wxGlade
 
     def on_select_client(self, event):  # wxGlade: IconWall.<event_handler>
-        self.client = eval(event.GetString())
+        self.client = ArtClients[(event.GetString())]
         self.getArt()
     
     def getArt(self):

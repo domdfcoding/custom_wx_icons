@@ -16,13 +16,16 @@ custom_wx_icons
 	* - Docs
 	  - |docs|
 	* - Tests
-	  - |travis| |requires| |codefactor|
+	  - |travis| |actions_windows| |actions_macos|
+	    |codefactor|
 	* - PyPI
 	  - |pypi-version| |supported-versions| |supported-implementations| |wheel|
+	* - Activity
+	  - |commits-latest| |commits-since| |maintained|
 	* - Other
-	  - |license| |language| |commits-since| |commits-latest| |maintained| 
+	  - |license| |language| |requires|
 
-.. |docs| image:: https://readthedocs.org/projects/custom_wx_icons/badge/?version=latest
+.. |docs| image:: https://img.shields.io/readthedocs/custom_wx_icons/latest?logo=read-the-docs
 	:target: https://custom_wx_icons.readthedocs.io/en/latest/?badge=latest
 	:alt: Documentation Status
 
@@ -30,19 +33,27 @@ custom_wx_icons
 	:target: https://travis-ci.com/domdfcoding/custom_wx_icons
 	:alt: Travis Build Status
 
+.. |actions_windows| image:: https://github.com/domdfcoding/custom_wx_icons/workflows/Windows%20Tests/badge.svg
+	:target: https://github.com/domdfcoding/custom_wx_icons/actions?query=workflow%3A%22Windows+Tests%22
+	:alt: Windows Tests Status
+	
+.. |actions_macos| image:: https://github.com/domdfcoding/custom_wx_icons/workflows/macOS%20Tests/badge.svg
+	:target: https://github.com/domdfcoding/custom_wx_icons/actions?query=workflow%3A%22macOS+Tests%22
+	:alt: macOS Tests Status
+
 .. |requires| image:: https://requires.io/github/domdfcoding/custom_wx_icons/requirements.svg?branch=master
 	:target: https://requires.io/github/domdfcoding/custom_wx_icons/requirements/?branch=master
 	:alt: Requirements Status
 
-.. |codefactor| image:: https://img.shields.io/codefactor/grade/github/domdfcoding/custom_wx_icons
+.. |codefactor| image:: https://img.shields.io/codefactor/grade/github/domdfcoding/custom_wx_icons?logo=codefactor
 	:target: https://www.codefactor.io/repository/github/domdfcoding/custom_wx_icons
 	:alt: CodeFactor Grade
 
-.. |pypi-version| image:: https://img.shields.io/pypi/v/custom_wx_icons.svg
+.. |pypi-version| image:: https://img.shields.io/pypi/v/custom_wx_icons
 	:target: https://pypi.org/project/custom_wx_icons/
 	:alt: PyPI - Package Version
 
-.. |supported-versions| image:: https://img.shields.io/pypi/pyversions/custom_wx_icons.svg
+.. |supported-versions| image:: https://img.shields.io/pypi/pyversions/custom_wx_icons
 	:target: https://pypi.org/project/custom_wx_icons/
 	:alt: PyPI - Supported Python Versions
 

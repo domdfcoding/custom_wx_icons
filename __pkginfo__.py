@@ -32,27 +32,27 @@ copyright = """
 general_trove_classifiers = [
 		# "Environment :: MacOS X",
 		# "Operating System :: MacOS :: MacOS X",
-		
+
 		# "Environment :: Win32 (MS Windows)",
 		# "Operating System :: Microsoft :: Windows",
 		# "Operating System :: Microsoft :: Windows :: Windows 10",
 		# "Operating System :: Microsoft :: Windows :: Windows 7",
 		# "Operating System :: Microsoft :: Windows :: Windows 8.1",
-		
+
 		"Operating System :: POSIX :: Linux",
 		"Topic :: Desktop Environment :: Gnome",
 		"Environment :: X11 Applications :: GTK",
-		
+
 		# "Operating System :: OS Independent",
-		
+
 		"Intended Audience :: Developers",
-		
+
 		"Programming Language :: Python :: 3.6",
 		"Programming Language :: Python :: 3.7",
 		"Programming Language :: Python :: 3.8",
 		"Programming Language :: Python :: 3 :: Only",
 		"Programming Language :: Python :: Implementation :: CPython",
-		
+
 		"Topic :: Software Development :: Libraries :: Python Modules",
 		"Topic :: Software Development :: User Interfaces",
 		]
@@ -60,13 +60,13 @@ general_trove_classifiers = [
 
 def prepare_data_files(modname, theme_name):
 	data_files = []
-	
+
 	theme_index_path = pathlib.Path(f"{modname}/{theme_name}/index.theme").absolute()
 	theme_content_root = theme_index_path.parent.absolute()
-	
+
 	parser = configparser.ConfigParser()
 	parser.read(theme_index_path)
-	
+
 	directories = parser.get("Icon Theme", "Directories").split(",")
 
 	for directory in directories:
@@ -75,17 +75,17 @@ def prepare_data_files(modname, theme_name):
 			for element in directory.split("/"):
 				if not (base_path / element).is_dir():
 					(base_path / element).mkdir()
-					
+
 				open(base_path / element / "__init__.py", "w").close()
 				base_path = base_path / element
-			
+
 			abs_dir_path = (theme_content_root / directory)
 			rel_dir_path = abs_dir_path.relative_to(pathlib.Path.cwd() / modname)
-			
+
 			data_files += [str(rel_dir_path / x) for x in os.listdir(abs_dir_path)]
-	
+
 	data_files.append(str(theme_index_path.relative_to(pathlib.Path.cwd() / modname)))
-	
+
 	return data_files
 
 
@@ -97,5 +97,5 @@ def get_requirements_and_readme(cwd):
 	else:
 		install_requires = pathlib.Path("requirements.txt").read_text().split("\n")
 		long_description = pathlib.Path("README.rst").read_text() + '\n'
-	
+
 	return install_requires, long_description

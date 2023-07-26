@@ -1,5 +1,4 @@
 #!/usr/bin/env python
-# -*- coding: utf-8 -*-
 #
 #  create_custom_theme.py
 """
@@ -24,6 +23,7 @@ Script to create the boilerplate for a custom theme
 #  MA 02110-1301, USA.
 #
 
+# stdlib
 import datetime
 import os
 import pathlib
@@ -56,7 +56,7 @@ AUTHOR_EMAIL = "dominic@davis-foster.co.uk"
 ###################################################################
 
 package_name = f"wx_icons_{THEME_NAME.lower()}"
-package_root = pathlib.Path(".").resolve() / THEME_NAME.lower()
+package_root = pathlib.Path('.').resolve() / THEME_NAME.lower()
 
 print(f"Creating theme in {package_root} .")
 
@@ -82,7 +82,6 @@ license_placeholder = """#  This file is distributed under the same license term
 author_copyright_string = f"Copyright (c) {datetime.datetime.now().year} {AUTHOR} <{AUTHOR_EMAIL}>"
 
 shebang = "#!/usr/bin/python3"
-
 
 (package_root / package_name / "__init__.py").write_text(
 		f'''{shebang}
@@ -184,11 +183,12 @@ if __name__ == '__main__':
 	# test_random_icons(theme)
 	test.test_icon_theme(theme)
 
-''')
+'''
+		)
 
 # Create directory to store icons
 maybe_make(package_root / package_name / THEME_NAME)
-	
+
 (package_root / package_name / THEME_NAME / "__init__.py").write_text('')
 
 # Create .bumpversion.cfg
@@ -203,18 +203,19 @@ tag = False
 
 [bumpversion:file:setup.py]
 
-""")
-
+"""
+		)
 
 # Create __pkginfo__.py
 if not (package_root / "__pkginfo__.py").exists():
 	os.symlink("../__pkginfo__.py", package_root / "__pkginfo__.py")
 
 if BUILD_SVG_FROM_SRC:
-	
+
 	# Create build_icons_from_src.py
-	with open(package_root / "build_icons_from_src.py", "w") as fp:
-		fp.write(f'''{shebang}
+	with open(package_root / "build_icons_from_src.py", 'w') as fp:
+		fp.write(
+				f'''{shebang}
 #
 """
 Script to chop up SVGs into individual sizes
@@ -235,11 +236,13 @@ import sys
 
 sys.path.append(".")
 sys.path.append("..")
-''')
+'''
+				)
 		for theme in INHERIT_LIST:
 			fp.write(f'sys.path.append("../{theme.lower()}")\n')
-			
-		fp.write(f'''
+
+		fp.write(
+				f'''
 
 # this package
 from gnome_icon_builder import get_scalable_directories, main
@@ -249,11 +252,12 @@ scalable_directories = get_scalable_directories(theme_index_path)
 output_dir = "./{package_name}/{THEME_NAME}"
 dpis = {str(SVG_FROM_SRC_DPIS)}  # DPI multipliers to render at
 main(os.path.join('.', 'svg_src'), dpis, output_dir, scalable_directories)
-''')
-	
+'''
+				)
+
 	if not (package_root / "svg_src").exists():
 		(package_root / "svg_src").mkdir()
-	
+
 	# Create example svg
 	(package_root / "svg_src" / "example-delete-me.svg").write_text(
 			'''<?xml version="1.0" encoding="UTF-8" standalone="no"?>
@@ -6975,7 +6979,8 @@ main(os.path.join('.', 'svg_src'), dpis, output_dir, scalable_directories)
     </g>
   </g>
 </svg>
-''')
+'''
+			)
 
 	# Create explanatory README.rst
 	(package_root / "svg_src" / "README.rst").write_text(
@@ -6986,8 +6991,8 @@ There is an example icon in this folder from the gnome-icon-theme (GPLv3 License
 You can use this as the basis for your own icons or, more likely, you will be copying SVGs into this folder that follow the same layout as the example.
 
 Delete the example SVG and this file when you are finished.
-''')
-
+'''
+			)
 
 # Create COPYING file with a few TODOs
 (package_root / "COPYING").write_text(
@@ -7001,15 +7006,15 @@ This work is licenced under the terms of the ...
 TODO: If the original project asked for attribution, give that here
 When attributing the artwork, using "ACME Project" is enough.
 Please link to http://www.example.org where available.
-""")
+"""
+		)
 
 # Create MANIFEST.in
-(package_root / "MANIFEST.in").write_text(
-		f"""include __pkginfo__.py
+(package_root / "MANIFEST.in"
+	).write_text(f"""include __pkginfo__.py
 include requirements.txt
 recursive-include {package_name} *
 """)
-
 
 # Create README.rst
 (package_root / "README.rst").write_text(
@@ -7042,15 +7047,13 @@ And then the icons can be accessed through wx.ArtProvider:
 Any `FreeDesktop Icon Theme Specification <https://specifications.freedesktop.org/icon-naming-spec/icon-naming-spec-latest.html>`_ name can be used.
 
 Currently the `Client ID` is not used, so just pass `wx.ART_OTHER`.
-""")
-
+"""
+		)
 
 # Create requirements.txt
-(package_root / "requirements.txt").write_text(
-		f"""wx_icons_{INHERITS_FROM.lower()}
+(package_root / "requirements.txt").write_text(f"""wx_icons_{INHERITS_FROM.lower()}
 importlib_resources>=1.0.2
 """)
-
 
 # Create setup.py
 (package_root / "setup.py").write_text(
@@ -7095,7 +7098,7 @@ classifiers = [
 		# "Development Status :: 5 - Production/Stable",
 		# "Development Status :: 6 - Mature",
 		# "Development Status :: 7 - Inactive",
-		
+
 		# TODO: Uncomment your license from the list below
 		# "License :: OSI Approved :: Academic Free License (AFL)",
 		# "License :: OSI Approved :: Apache Software License",
@@ -7132,9 +7135,11 @@ setup(
 		# 	]
 		)
 
-''')
+'''
+		)
 
 print("Some files have TODO items in them. Please finish those manually.")
 print(
 		"Please add a file to the package root called `LICENSE` or `LICENCE` that contains "
-		"the text of the license the UPSTREAM theme this package is based on is licensed under.")
+		"the text of the license the UPSTREAM theme this package is based on is licensed under."
+		)

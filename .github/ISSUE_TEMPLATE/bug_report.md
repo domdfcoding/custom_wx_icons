@@ -1,7 +1,6 @@
 ---
 name: Bug report
 about: Create a report to help us improve
-title: "[BUG] "
 labels: bug
 assignees: domdfcoding
 
@@ -10,14 +9,18 @@ assignees: domdfcoding
 <!-- Have you searched for similar issues? Before submitting this issue, please check the open issues and add a note before logging a new issue.
 
 PLEASE USE THE TEMPLATE BELOW TO PROVIDE INFORMATION ABOUT THE ISSUE.
-INSUFFICIENT INFO WILL GET THE ISSUE CLOSED. IT WILL ONLY BE REOPENED AFTER SUFFICIENT INFO IS PROVIDED-->
+THE ISSUE WILL BE CLOSED IF INSUFFICIENT INFORMATION IS PROVIDED.
+-->
 
 ## Description
 <!--Provide a brief description of the issue-->
 
 
 ## Steps to Reproduce
-<!--Please add a series of steps to reproduce the issue-->
+<!--Please add a series of steps to reproduce the issue.
+
+If possible, please include a small, self-contained reproduction.
+-->
 
    1.
    2.
@@ -41,7 +44,7 @@ INSUFFICIENT INFO WILL GET THE ISSUE CLOSED. IT WILL ONLY BE REOPENED AFTER SUFF
   * custom_wx_icons:
 
 ## Installation source
-<!-- e.g. Github repository, Github Releases, PyPI/pip, Anaconda/conda -->
+<!-- e.g. GitHub repository, GitHub Releases, PyPI/pip, Anaconda/conda -->
 
 
 ## Other Additional Information:

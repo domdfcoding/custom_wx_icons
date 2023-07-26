@@ -48,7 +48,6 @@ e.g.
 #  MA 02110-1301, USA.
 #
 
-
 # stdlib
 import configparser
 import os
@@ -62,7 +61,7 @@ import xml.sax
 from lxml import etree
 from scour import scour
 
-OPTIPNG = '/usr/bin/optipng'
+OPTIPNG = "/usr/bin/optipng"
 
 
 class ScourOptions:
@@ -88,7 +87,7 @@ def get_scalable_directories(theme_index_path):
 	parser = configparser.ConfigParser()
 	parser.read(theme_index_path)
 
-	directories = parser.get("Icon Theme", "Directories").split(",")
+	directories = parser.get("Icon Theme", "Directories").split(',')
 
 	scalable_directories = []
 
@@ -102,13 +101,13 @@ def get_scalable_directories(theme_index_path):
 
 def optimize_png(png_file):
 	if os.path.exists(OPTIPNG):
-		process = subprocess.Popen([OPTIPNG, '-quiet', '-o7', png_file])
+		process = subprocess.Popen([OPTIPNG, "-quiet", "-o7", png_file])
 		process.wait()
 
 
 def wait_for_prompt(process, command=None):
 	if command is not None:
-		process.stdin.write((command + '\n').encode('utf-8'))
+		process.stdin.write((command + '\n').encode("utf-8"))
 
 	# This is kinda ugly ...
 	# Wait for just a '>', or '\n>' if some other char appeared first
@@ -116,14 +115,14 @@ def wait_for_prompt(process, command=None):
 	if output == b'>':
 		return
 	elif output == b"Emergency save activated!":
-		raise IOError("Something went wrong")
+		raise OSError("Something went wrong")
 
 	output += process.stdout.read(1)
 	while output != b'\n>':
 		output += process.stdout.read(1)
 		output = output[1:]
 		if output == b"Emergency save activated!":
-			raise IOError("Something went wrong")
+			raise OSError("Something went wrong")
 
 
 def get_layer_ids_by_name(input_file, layer_name):
@@ -131,8 +130,7 @@ def get_layer_ids_by_name(input_file, layer_name):
 
 	# Find all layers
 	all_layers = tree.findall(
-			".//svg:g[@inkscape:groupmode=\"layer\"]",
-			namespaces={"svg": SVG, "inkscape": INKSCAPE}
+			'.//svg:g[@inkscape:groupmode="layer"]', namespaces={"svg": SVG, "inkscape": INKSCAPE}
 			)
 
 	layer_ids = []
@@ -161,11 +159,12 @@ def minify_svg(input_file, output_file):
 	# use scour to remove redundant stuff and then write to file
 	svg_string = scour.scourString(svg_string, ScourOptions())
 
-	with open(output_file, "w") as fp:
+	with open(output_file, 'w') as fp:
 		fp.write(svg_string)
 
 
 class IconBuilder:
+
 	def __init__(self, infile, outfile, icon_name, dpi, id, scalable):
 		self.inkscape_process = None
 
@@ -177,7 +176,10 @@ class IconBuilder:
 
 	@staticmethod
 	def start_inkscape():
-		process = subprocess.Popen(['inkscape', '--shell'], bufsize=0, stdin=subprocess.PIPE, stdout=subprocess.PIPE)
+		process = subprocess.Popen(["inkscape", "--shell"],
+									bufsize=0,
+									stdin=subprocess.PIPE,
+									stdout=subprocess.PIPE)
 		wait_for_prompt(process)
 		return process
 
@@ -187,9 +189,12 @@ class IconBuilder:
 
 		cmd = [
 				icon_file,
-				'--export-dpi', str(dpi),
-				'-i', rect,
-				'-e', output_file,
+				"--export-dpi",
+				str(dpi),
+				"-i",
+				rect,
+				"-e",
+				output_file,
 				]
 
 		wait_for_prompt(self.inkscape_process, ' '.join(cmd))
@@ -201,10 +206,11 @@ class IconBuilder:
 		print(rect, icon_file)
 
 		cmd = [
-				str(icon_file),
-				# '--export-dpi', str(dpi),
-				'-i', rect,
-				'-l', str(output_file),
+				str(icon_file),  # '--export-dpi', str(dpi),
+				"-i",
+				rect,
+				"-l",
+				str(output_file),
 				]
 
 		wait_for_prompt(self.inkscape_process, ' '.join(cmd))
@@ -228,7 +234,7 @@ class IconBuilder:
 				break
 
 		print(icon_layer_ids)
-		print("\n")
+		print('\n')
 
 		# Get layer ids for hires layers, as we'll need them later
 		hires_layer_ids = get_layer_ids_by_name(input_file, "hires")
@@ -237,10 +243,11 @@ class IconBuilder:
 			if icon_layer_ids[0]:
 
 				cmd = [
-						str(input_file),
-						# '--export-dpi', str(dpi), # TODO
-						'--export-id', icon_layer_ids[0],
-						'--export-plain-svg', str(tmp_file),
+						str(input_file),  # '--export-dpi', str(dpi), # TODO
+						"--export-id",
+						icon_layer_ids[0],
+						"--export-plain-svg",
+						str(tmp_file),
 						"--export-id-only",
 						]
 
@@ -268,10 +275,11 @@ class IconBuilder:
 					self.inkscape_process = self.start_inkscape()
 
 				cmd = [
-						str(input_file),
-						# '--export-dpi', str(dpi), # TODO
-						'--export-id', layer_id,
-						'--export-plain-svg', str(tmp_file),
+						str(input_file),  # '--export-dpi', str(dpi), # TODO
+						"--export-id",
+						layer_id,
+						"--export-plain-svg",
+						str(tmp_file),
 						"--export-id-only",
 						"--export-area-page",
 						]
@@ -308,26 +316,27 @@ class IconBuilder:
 
 
 def main(source_dir, dpis, output_dir, scalable_directories):
+
 	class ContentHandler(xml.sax.ContentHandler):
 		ROOT = 0
 		SVG = 1
 		LAYER = 2
 		OTHER = 3
 		TEXT = 4
-		
+
 		def __init__(self, path, force=False, filter=None):
 			self.stack = [self.ROOT]
 			self.inside = [self.ROOT]
 			self.path = path
 			self.rects = []
 			self.state = self.ROOT
-			self.chars = ""
+			self.chars = ''
 			self.force = force
 			self.filter = filter
-		
+
 		def endDocument(self):
 			pass
-		
+
 		def startElement(self, name, attrs):
 			if self.inside[-1] == self.ROOT:
 				if name == "svg":
@@ -336,12 +345,10 @@ def main(source_dir, dpis, output_dir, scalable_directories):
 					return
 			elif self.inside[-1] == self.SVG:
 				if (
-						name == "g"
-						and 'inkscape:groupmode' in attrs
-						and 'inkscape:label' in attrs
-						and attrs['inkscape:groupmode'] == 'layer'
-						and attrs['inkscape:label'].lower().startswith('baseplate')
-					):
+						name == 'g' and "inkscape:groupmode" in attrs and "inkscape:label" in attrs
+						and attrs["inkscape:groupmode"] == "layer"
+						and attrs["inkscape:label"].lower().startswith("baseplate")
+						):
 					self.stack.append(self.LAYER)
 					self.inside.append(self.LAYER)
 					self.context = None
@@ -349,68 +356,68 @@ def main(source_dir, dpis, output_dir, scalable_directories):
 					self.rects = []
 					return
 			elif self.inside[-1] == self.LAYER:
-				if name == "text" and ('inkscape:label' in attrs) and attrs['inkscape:label'] == 'context':
+				if name == "text" and ("inkscape:label" in attrs) and attrs["inkscape:label"] == "context":
 					self.stack.append(self.TEXT)
 					self.inside.append(self.TEXT)
-					self.text = 'context'
-					self.chars = ""
+					self.text = "context"
+					self.chars = ''
 					return
-				elif name == "text" and ('inkscape:label' in attrs) and attrs['inkscape:label'] == 'icon-name':
+				elif name == "text" and ("inkscape:label" in attrs) and attrs["inkscape:label"] == "icon-name":
 					self.stack.append(self.TEXT)
 					self.inside.append(self.TEXT)
-					self.text = 'icon-name'
-					self.chars = ""
+					self.text = "icon-name"
+					self.chars = ''
 					return
 				elif name == "rect":
 					self.rects.append(attrs)
-			
+
 			self.stack.append(self.OTHER)
-		
+
 		def endElement(self, name):
 			stacked = self.stack.pop()
-			
+
 			if self.inside[-1] == stacked:
 				self.inside.pop()
-			
+
 			if stacked == self.TEXT and self.text is not None:
-				assert self.text in ['context', 'icon-name']
-				if self.text == 'context':
+				assert self.text in ["context", "icon-name"]
+				if self.text == "context":
 					self.context = self.chars
-				elif self.text == 'icon-name':
+				elif self.text == "icon-name":
 					self.icon_name = self.chars
 				self.text = None
 			elif stacked == self.LAYER:
 				assert self.icon_name
 				assert self.context
-				
+
 				if self.filter is not None and self.icon_name not in self.filter:
 					return
-				
+
 				print(self.context, self.icon_name)
-				
+
 				# TODO: Check that all sizes are available, and if not use the largest size available for the missing sizes
-				
+
 				for rect in self.rects:
 					for dpi_factor in dpis:
-						width = int(float(rect['width']))
-						height = int(float(rect['height']))
-						id = rect['id']
+						width = int(float(rect["width"]))
+						height = int(float(rect["height"]))
+						id = rect["id"]
 						dpi = 96 * dpi_factor
-						
-						size_str = "%sx%s" % (width, height)
+
+						size_str = f"{width}x{height}"
 						if dpi_factor != 1:
 							size_str += "@%sx" % dpi_factor
-						
+
 						directory = os.path.join(output_dir, size_str, self.context)
-						
+
 						scalable = bool(f"{size_str}/{self.context}" in scalable_directories)
-						
-						svg_file = os.path.join(directory, self.icon_name + '.svg')
-						png_file = os.path.join(directory, self.icon_name + '.png')
-						
+
+						svg_file = os.path.join(directory, self.icon_name + ".svg")
+						png_file = os.path.join(directory, self.icon_name + ".png")
+
 						if not os.path.exists(directory):
 							os.makedirs(directory)
-						
+
 						if scalable:
 							if os.path.isfile(png_file):
 								os.unlink(png_file)
@@ -419,13 +426,13 @@ def main(source_dir, dpis, output_dir, scalable_directories):
 							if os.path.isfile(svg_file):
 								os.unlink(svg_file)
 							outfile = png_file
-						
+
 						# Do a time based check!
 						if self.force or not os.path.exists(outfile):
-						
+
 							try:
 								IconBuilder(self.path, outfile, self.icon_name, dpi, id, scalable)
-							except IOError:
+							except OSError:
 								print(f"Unable to process {self.path}.")
 								continue
 						else:
@@ -438,22 +445,22 @@ def main(source_dir, dpis, output_dir, scalable_directories):
 						sys.stdout.flush()
 				sys.stdout.write('\n')
 				sys.stdout.flush()
-		
+
 		def characters(self, chars):
 			self.chars += chars.strip()
-	
+
 	if len(sys.argv) == 1:
 		if not os.path.exists(output_dir):
 			os.mkdir(output_dir)
-		open(os.path.join(output_dir, "__init__.py"), "w").close()
-		print('Rendering from SVGs in', source_dir)
+		open(os.path.join(output_dir, "__init__.py"), 'w').close()
+		print("Rendering from SVGs in", source_dir)
 		for file in os.listdir(source_dir):
-			if file[-4:] == '.svg':
+			if file[-4:] == ".svg":
 				file = os.path.join(source_dir, file)
 				handler = ContentHandler(file)
 				xml.sax.parse(open(file), handler)
 	else:
-		file = os.path.join(source_dir, sys.argv[1] + '.svg')
+		file = os.path.join(source_dir, sys.argv[1] + ".svg")
 		if len(sys.argv) > 2:
 			icons = sys.argv[2:]
 		else:

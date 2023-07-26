@@ -4,84 +4,109 @@ custom_wx_icons
 
 .. start short_desc
 
-**Framework for creating freedesktop-esque icon themes for wxPython.**
+.. documentation-summary::
+	:meta:
 
 .. end short_desc
-.. start shields 
+.. start shields
 
-.. list-table::
-	:stub-columns: 1
-	:widths: 10 90
+.. only:: html
 
-	* - Docs
-	  - |docs|
-	* - Tests
-	  - |travis| |actions_windows| |actions_macos|
-	    |codefactor|
-	* - PyPI
-	  - |pypi-version| |supported-versions| |supported-implementations| |wheel|
-	* - Activity
-	  - |commits-latest| |commits-since| |maintained|
-	* - Other
-	  - |license| |language| |requires|
+	.. list-table::
+		:stub-columns: 1
+		:widths: 10 90
 
-.. |docs| image:: https://img.shields.io/readthedocs/custom_wx_icons/latest?logo=read-the-docs
-	:target: https://custom_wx_icons.readthedocs.io/en/latest/?badge=latest
-	:alt: Documentation Status
+		* - Docs
+		  - |docs| |docs_check|
+		* - Tests
+		  - |actions_linux| |actions_windows| |actions_macos|
+		* - PyPI
+		  - |pypi-version| |supported-versions| |supported-implementations| |wheel|
+		* - Activity
+		  - |commits-latest| |commits-since| |maintained| |pypi-downloads|
+		* - QA
+		  - |codefactor| |actions_flake8| |actions_mypy|
+		* - Other
+		  - |license| |language| |requires|
 
-.. |travis| image:: https://img.shields.io/travis/com/domdfcoding/custom_wx_icons/master?logo=travis
-	:target: https://travis-ci.com/domdfcoding/custom_wx_icons
-	:alt: Travis Build Status
+	.. |docs| rtfd-shield::
+		:project: custom-wx-icons
+		:alt: Documentation Build Status
 
-.. |actions_windows| image:: https://github.com/domdfcoding/custom_wx_icons/workflows/Windows%20Tests/badge.svg
-	:target: https://github.com/domdfcoding/custom_wx_icons/actions?query=workflow%3A%22Windows+Tests%22
-	:alt: Windows Tests Status
-	
-.. |actions_macos| image:: https://github.com/domdfcoding/custom_wx_icons/workflows/macOS%20Tests/badge.svg
-	:target: https://github.com/domdfcoding/custom_wx_icons/actions?query=workflow%3A%22macOS+Tests%22
-	:alt: macOS Tests Status
+	.. |docs_check| actions-shield::
+		:workflow: Docs Check
+		:alt: Docs Check Status
 
-.. |requires| image:: https://requires.io/github/domdfcoding/custom_wx_icons/requirements.svg?branch=master
-	:target: https://requires.io/github/domdfcoding/custom_wx_icons/requirements/?branch=master
-	:alt: Requirements Status
+	.. |actions_linux| actions-shield::
+		:workflow: Linux
+		:alt: Linux Test Status
 
-.. |codefactor| image:: https://img.shields.io/codefactor/grade/github/domdfcoding/custom_wx_icons?logo=codefactor
-	:target: https://www.codefactor.io/repository/github/domdfcoding/custom_wx_icons
-	:alt: CodeFactor Grade
+	.. |actions_windows| actions-shield::
+		:workflow: Windows
+		:alt: Windows Test Status
 
-.. |pypi-version| image:: https://img.shields.io/pypi/v/custom_wx_icons
-	:target: https://pypi.org/project/custom_wx_icons/
-	:alt: PyPI - Package Version
+	.. |actions_macos| actions-shield::
+		:workflow: macOS
+		:alt: macOS Test Status
 
-.. |supported-versions| image:: https://img.shields.io/pypi/pyversions/custom_wx_icons
-	:target: https://pypi.org/project/custom_wx_icons/
-	:alt: PyPI - Supported Python Versions
+	.. |actions_flake8| actions-shield::
+		:workflow: Flake8
+		:alt: Flake8 Status
 
-.. |supported-implementations| image:: https://img.shields.io/pypi/implementation/custom_wx_icons
-	:target: https://pypi.org/project/custom_wx_icons/
-	:alt: PyPI - Supported Implementations
+	.. |actions_mypy| actions-shield::
+		:workflow: mypy
+		:alt: mypy status
 
-.. |wheel| image:: https://img.shields.io/pypi/wheel/custom_wx_icons
-	:target: https://pypi.org/project/custom_wx_icons/
-	:alt: PyPI - Wheel
+	.. |requires| image:: https://dependency-dash.repo-helper.uk/github/domdfcoding/custom_wx_icons/badge.svg
+		:target: https://dependency-dash.repo-helper.uk/github/domdfcoding/custom_wx_icons/
+		:alt: Requirements Status
 
-.. |license| image:: https://img.shields.io/github/license/domdfcoding/custom_wx_icons
-	:alt: License
-	:target: https://github.com/domdfcoding/custom_wx_icons/blob/master/LICENSE
+	.. |codefactor| codefactor-shield::
+		:alt: CodeFactor Grade
 
-.. |language| image:: https://img.shields.io/github/languages/top/domdfcoding/custom_wx_icons
-	:alt: GitHub top language
+	.. |pypi-version| pypi-shield::
+		:project: custom_wx_icons
+		:version:
+		:alt: PyPI - Package Version
 
-.. |commits-since| image:: https://img.shields.io/github/commits-since/domdfcoding/custom_wx_icons/v0.0.1
-	:target: https://github.com/domdfcoding/custom_wx_icons/pulse
-	:alt: GitHub commits since tagged version
+	.. |supported-versions| pypi-shield::
+		:project: custom_wx_icons
+		:py-versions:
+		:alt: PyPI - Supported Python Versions
 
-.. |commits-latest| image:: https://img.shields.io/github/last-commit/domdfcoding/custom_wx_icons
-	:target: https://github.com/domdfcoding/custom_wx_icons/commit/master
-	:alt: GitHub last commit
+	.. |supported-implementations| pypi-shield::
+		:project: custom_wx_icons
+		:implementations:
+		:alt: PyPI - Supported Implementations
 
-.. |maintained| image:: https://img.shields.io/maintenance/yes/2020
-	:alt: Maintenance
+	.. |wheel| pypi-shield::
+		:project: custom_wx_icons
+		:wheel:
+		:alt: PyPI - Wheel
+
+	.. |license| github-shield::
+		:license:
+		:alt: License
+
+	.. |language| github-shield::
+		:top-language:
+		:alt: GitHub top language
+
+	.. |commits-since| github-shield::
+		:commits-since: v0.0.1
+		:alt: GitHub commits since tagged version
+
+	.. |commits-latest| github-shield::
+		:last-commit:
+		:alt: GitHub last commit
+
+	.. |maintained| maintained-shield:: 2023
+		:alt: Maintenance
+
+	.. |pypi-downloads| pypi-shield::
+		:project: custom_wx_icons
+		:downloads: month
+		:alt: PyPI - Downloads
 
 .. end shields
 
@@ -186,10 +211,18 @@ The individual themes contain instructions on how to use them in your program.
 
 	docs
 
+.. sidebar-links::
+	:caption: Links
+	:github:
+	:pypi: custom_wx_icons
+
+
 .. start links
 
-View the :ref:`Function Index <genindex>` or browse the `Source Code <_modules/index.html>`__.
+.. only:: html
 
-`Browse the GitHub Repository <https://github.com/domdfcoding/custom_wx_icons>`__
+	View the :ref:`Function Index <genindex>` or browse the `Source Code <_modules/index.html>`__.
+
+	:github:repo:`Browse the GitHub Repository <domdfcoding/custom_wx_icons>`
 
 .. end links

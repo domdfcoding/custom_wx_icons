@@ -20,10 +20,8 @@ custom_wx_icons
 		  - |docs| |docs_check|
 		* - Tests
 		  - |actions_linux| |actions_windows| |actions_macos|
-		* - PyPI
-		  - |pypi-version| |supported-versions| |supported-implementations| |wheel|
 		* - Activity
-		  - |commits-latest| |commits-since| |maintained| |pypi-downloads|
+		  - |commits-latest| |commits-since| |maintained|
 		* - QA
 		  - |codefactor| |actions_flake8| |actions_mypy|
 		* - Other
@@ -64,26 +62,6 @@ custom_wx_icons
 	.. |codefactor| codefactor-shield::
 		:alt: CodeFactor Grade
 
-	.. |pypi-version| pypi-shield::
-		:project: custom_wx_icons
-		:version:
-		:alt: PyPI - Package Version
-
-	.. |supported-versions| pypi-shield::
-		:project: custom_wx_icons
-		:py-versions:
-		:alt: PyPI - Supported Python Versions
-
-	.. |supported-implementations| pypi-shield::
-		:project: custom_wx_icons
-		:implementations:
-		:alt: PyPI - Supported Implementations
-
-	.. |wheel| pypi-shield::
-		:project: custom_wx_icons
-		:wheel:
-		:alt: PyPI - Wheel
-
 	.. |license| github-shield::
 		:license:
 		:alt: License
@@ -102,11 +80,6 @@ custom_wx_icons
 
 	.. |maintained| maintained-shield:: 2023
 		:alt: Maintenance
-
-	.. |pypi-downloads| pypi-shield::
-		:project: custom_wx_icons
-		:downloads: month
-		:alt: PyPI - Downloads
 
 .. end shields
 

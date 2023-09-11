@@ -9,6 +9,7 @@ short_desc: 'Framework for creating freedesktop-esque icon themes for wxPython.'
 
 enable_tests: False
 enable_conda: False
+on_pypi: false
 
 exclude_files:
   - copy_pypi_2_github

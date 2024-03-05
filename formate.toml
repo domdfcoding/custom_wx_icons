@@ -51,4 +51,4 @@ known_third_party = [
     "sphinxcontrib_httpdomain",
     "sphinxemoji",
 ]
-known_first_party = "custom_wx_icons"
+known_first_party = [ "custom_wx_icons",]

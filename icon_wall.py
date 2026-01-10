@@ -56,109 +56,274 @@ class IconWall(wx.Frame):
 		self.SetSize((400, 300))
 		self.client_combo = wx.ComboBox(self, wx.ID_ANY, choices=[], style=wx.CB_DROPDOWN | wx.CB_READONLY)
 		self.size_spinctrl = wx.SpinCtrl(
-				self, wx.ID_ANY, "64", min=16, max=256, style=wx.SP_ARROW_KEYS | wx.TE_PROCESS_ENTER
+				self,
+				wx.ID_ANY,
+				"64",
+				min=16,
+				max=256,
+				style=wx.SP_ARROW_KEYS | wx.TE_PROCESS_ENTER,
 				)
 		self.wx_ART_ERROR = IconPanel(self, "wx.ART_ERROR", wx.ART_ERROR, self.icon_size, self.client, wx.ID_ANY)
 		self.wx_ART_QUESTION = IconPanel(
-				self, "wx.ART_QUESTION", wx.ART_QUESTION, self.icon_size, self.client, wx.ID_ANY
+				self,
+				"wx.ART_QUESTION",
+				wx.ART_QUESTION,
+				self.icon_size,
+				self.client,
+				wx.ID_ANY,
 				)
 		self.wx_ART_WARNING = IconPanel(
-				self, "wx.ART_WARNING", wx.ART_WARNING, self.icon_size, self.client, wx.ID_ANY
+				self,
+				"wx.ART_WARNING",
+				wx.ART_WARNING,
+				self.icon_size,
+				self.client,
+				wx.ID_ANY,
 				)
 		self.wx_ART_INFORMATION = IconPanel(
-				self, "wx.ART_INFORMATION", wx.ART_INFORMATION, self.icon_size, self.client, wx.ID_ANY
+				self,
+				"wx.ART_INFORMATION",
+				wx.ART_INFORMATION,
+				self.icon_size,
+				self.client,
+				wx.ID_ANY,
 				)
 		self.wx_ART_ADD_BOOKMARK = IconPanel(
-				self, "wx.ART_ADD_BOOKMARK", wx.ART_ADD_BOOKMARK, self.icon_size, self.client, wx.ID_ANY
+				self,
+				"wx.ART_ADD_BOOKMARK",
+				wx.ART_ADD_BOOKMARK,
+				self.icon_size,
+				self.client,
+				wx.ID_ANY,
 				)
 		self.wx_ART_DEL_BOOKMARK = IconPanel(
-				self, "wx.ART_DEL_BOOKMARK", wx.ART_DEL_BOOKMARK, self.icon_size, self.client, wx.ID_ANY
+				self,
+				"wx.ART_DEL_BOOKMARK",
+				wx.ART_DEL_BOOKMARK,
+				self.icon_size,
+				self.client,
+				wx.ID_ANY,
 				)
 		self.wx_ART_HELP_SIDE_PANEL = IconPanel(
-				self, "wx.ART_HELP_SIDE_PANEL", wx.ART_HELP_SIDE_PANEL, self.icon_size, self.client, wx.ID_ANY
+				self,
+				"wx.ART_HELP_SIDE_PANEL",
+				wx.ART_HELP_SIDE_PANEL,
+				self.icon_size,
+				self.client,
+				wx.ID_ANY,
 				)
 		self.wx_ART_HELP_SETTINGS = IconPanel(
-				self, "wx.ART_HELP_SETTINGS", wx.ART_HELP_SETTINGS, self.icon_size, self.client, wx.ID_ANY
+				self,
+				"wx.ART_HELP_SETTINGS",
+				wx.ART_HELP_SETTINGS,
+				self.icon_size,
+				self.client,
+				wx.ID_ANY,
 				)
 		self.wx_ART_HELP_BOOK = IconPanel(
-				self, "wx.ART_HELP_BOOK", wx.ART_HELP_BOOK, self.icon_size, self.client, wx.ID_ANY
+				self,
+				"wx.ART_HELP_BOOK",
+				wx.ART_HELP_BOOK,
+				self.icon_size,
+				self.client,
+				wx.ID_ANY,
 				)
 		self.wx_ART_HELP_FOLDER = IconPanel(
-				self, "wx.ART_HELP_FOLDER", wx.ART_HELP_FOLDER, self.icon_size, self.client, wx.ID_ANY
+				self,
+				"wx.ART_HELP_FOLDER",
+				wx.ART_HELP_FOLDER,
+				self.icon_size,
+				self.client,
+				wx.ID_ANY,
 				)
 		self.wx_ART_HELP_PAGE = IconPanel(
-				self, "wx.ART_HELP_PAGE", wx.ART_HELP_PAGE, self.icon_size, self.client, wx.ID_ANY
+				self,
+				"wx.ART_HELP_PAGE",
+				wx.ART_HELP_PAGE,
+				self.icon_size,
+				self.client,
+				wx.ID_ANY,
 				)
 		self.wx_ART_GO_BACK = IconPanel(
-				self, "wx.ART_GO_BACK", wx.ART_GO_BACK, self.icon_size, self.client, wx.ID_ANY
+				self,
+				"wx.ART_GO_BACK",
+				wx.ART_GO_BACK,
+				self.icon_size,
+				self.client,
+				wx.ID_ANY,
 				)
 		self.wx_ART_GO_FORWARD = IconPanel(
-				self, "wx.ART_GO_FORWARD", wx.ART_GO_FORWARD, self.icon_size, self.client, wx.ID_ANY
+				self,
+				"wx.ART_GO_FORWARD",
+				wx.ART_GO_FORWARD,
+				self.icon_size,
+				self.client,
+				wx.ID_ANY,
 				)
 		self.wx_ART_GO_UP = IconPanel(self, "wx.ART_GO_UP", wx.ART_GO_UP, self.icon_size, self.client, wx.ID_ANY)
 		self.wx_ART_GO_DOWN = IconPanel(
-				self, "wx.ART_GO_DOWN", wx.ART_GO_DOWN, self.icon_size, self.client, wx.ID_ANY
+				self,
+				"wx.ART_GO_DOWN",
+				wx.ART_GO_DOWN,
+				self.icon_size,
+				self.client,
+				wx.ID_ANY,
 				)
 		self.wx_ART_GO_TO_PARENT = IconPanel(
-				self, "wx.ART_GO_TO_PARENT", wx.ART_GO_TO_PARENT, self.icon_size, self.client, wx.ID_ANY
+				self,
+				"wx.ART_GO_TO_PARENT",
+				wx.ART_GO_TO_PARENT,
+				self.icon_size,
+				self.client,
+				wx.ID_ANY,
 				)
 		self.wx_ART_GO_HOME = IconPanel(
-				self, "wx.ART_GO_HOME", wx.ART_GO_HOME, self.icon_size, self.client, wx.ID_ANY
+				self,
+				"wx.ART_GO_HOME",
+				wx.ART_GO_HOME,
+				self.icon_size,
+				self.client,
+				wx.ID_ANY,
 				)
 		self.wx_ART_GOTO_FIRST = IconPanel(
-				self, "wx.ART_GOTO_FIRST", wx.ART_GOTO_FIRST, self.icon_size, self.client, wx.ID_ANY
+				self,
+				"wx.ART_GOTO_FIRST",
+				wx.ART_GOTO_FIRST,
+				self.icon_size,
+				self.client,
+				wx.ID_ANY,
 				)
 		self.wx_ART_GOTO_LAST = IconPanel(
-				self, "wx.ART_GOTO_LAST", wx.ART_GOTO_LAST, self.icon_size, self.client, wx.ID_ANY
+				self,
+				"wx.ART_GOTO_LAST",
+				wx.ART_GOTO_LAST,
+				self.icon_size,
+				self.client,
+				wx.ID_ANY,
 				)
 		self.wx_ART_PRINT = IconPanel(self, "wx.ART_PRINT", wx.ART_PRINT, self.icon_size, self.client, wx.ID_ANY)
 		self.wx_ART_HELP = IconPanel(self, "wx.ART_HELP", wx.ART_HELP, self.icon_size, self.client, wx.ID_ANY)
 		self.wx_ART_TIP = IconPanel(self, "wx.ART_TIP", wx.ART_TIP, self.icon_size, self.client, wx.ID_ANY)
 		self.wx_ART_REPORT_VIEW = IconPanel(
-				self, "wx.ART_REPORT_VIEW", wx.ART_REPORT_VIEW, self.icon_size, self.client, wx.ID_ANY
+				self,
+				"wx.ART_REPORT_VIEW",
+				wx.ART_REPORT_VIEW,
+				self.icon_size,
+				self.client,
+				wx.ID_ANY,
 				)
 		self.wx_ART_LIST_VIEW = IconPanel(
-				self, "wx.ART_LIST_VIEW", wx.ART_LIST_VIEW, self.icon_size, self.client, wx.ID_ANY
+				self,
+				"wx.ART_LIST_VIEW",
+				wx.ART_LIST_VIEW,
+				self.icon_size,
+				self.client,
+				wx.ID_ANY,
 				)
 		self.wx_ART_NEW_DIR = IconPanel(
-				self, "wx.ART_NEW_DIR", wx.ART_NEW_DIR, self.icon_size, self.client, wx.ID_ANY
+				self,
+				"wx.ART_NEW_DIR",
+				wx.ART_NEW_DIR,
+				self.icon_size,
+				self.client,
+				wx.ID_ANY,
 				)
 		self.wx_ART_FOLDER = IconPanel(
-				self, "wx.ART_FOLDER", wx.ART_FOLDER, self.icon_size, self.client, wx.ID_ANY
+				self,
+				"wx.ART_FOLDER",
+				wx.ART_FOLDER,
+				self.icon_size,
+				self.client,
+				wx.ID_ANY,
 				)
 		self.wx_ART_FOLDER_OPEN = IconPanel(
-				self, "wx.ART_FOLDER_OPEN", wx.ART_FOLDER_OPEN, self.icon_size, self.client, wx.ID_ANY
+				self,
+				"wx.ART_FOLDER_OPEN",
+				wx.ART_FOLDER_OPEN,
+				self.icon_size,
+				self.client,
+				wx.ID_ANY,
 				)
 		self.wx_ART_GO_DIR_UP = IconPanel(
-				self, "wx.ART_GO_DIR_UP", wx.ART_GO_DIR_UP, self.icon_size, self.client, wx.ID_ANY
+				self,
+				"wx.ART_GO_DIR_UP",
+				wx.ART_GO_DIR_UP,
+				self.icon_size,
+				self.client,
+				wx.ID_ANY,
 				)
 		self.wx_ART_EXECUTABLE_FILE = IconPanel(
-				self, "wx.ART_EXECUTABLE_FILE", wx.ART_EXECUTABLE_FILE, self.icon_size, self.client, wx.ID_ANY
+				self,
+				"wx.ART_EXECUTABLE_FILE",
+				wx.ART_EXECUTABLE_FILE,
+				self.icon_size,
+				self.client,
+				wx.ID_ANY,
 				)
 		self.wx_ART_NORMAL_FILE = IconPanel(
-				self, "wx.ART_NORMAL_FILE", wx.ART_NORMAL_FILE, self.icon_size, self.client, wx.ID_ANY
+				self,
+				"wx.ART_NORMAL_FILE",
+				wx.ART_NORMAL_FILE,
+				self.icon_size,
+				self.client,
+				wx.ID_ANY,
 				)
 		self.wx_ART_TICK_MARK = IconPanel(
-				self, "wx.ART_TICK_MARK", wx.ART_TICK_MARK, self.icon_size, self.client, wx.ID_ANY
+				self,
+				"wx.ART_TICK_MARK",
+				wx.ART_TICK_MARK,
+				self.icon_size,
+				self.client,
+				wx.ID_ANY,
 				)
 		self.wx_ART_CROSS_MARK = IconPanel(
-				self, "wx.ART_CROSS_MARK", wx.ART_CROSS_MARK, self.icon_size, self.client, wx.ID_ANY
+				self,
+				"wx.ART_CROSS_MARK",
+				wx.ART_CROSS_MARK,
+				self.icon_size,
+				self.client,
+				wx.ID_ANY,
 				)
 		self.wx_ART_MISSING_IMAGE = IconPanel(
-				self, "wx.ART_MISSING_IMAGE", wx.ART_MISSING_IMAGE, self.icon_size, self.client, wx.ID_ANY
+				self,
+				"wx.ART_MISSING_IMAGE",
+				wx.ART_MISSING_IMAGE,
+				self.icon_size,
+				self.client,
+				wx.ID_ANY,
 				)
 		self.wx_ART_NEW = IconPanel(self, "wx.ART_NEW", wx.ART_NEW, self.icon_size, self.client, wx.ID_ANY)
 		self.wx_ART_FILE_OPEN = IconPanel(
-				self, "wx.ART_FILE_OPEN", wx.ART_FILE_OPEN, self.icon_size, self.client, wx.ID_ANY
+				self,
+				"wx.ART_FILE_OPEN",
+				wx.ART_FILE_OPEN,
+				self.icon_size,
+				self.client,
+				wx.ID_ANY,
 				)
 		self.wx_ART_FILE_SAVE = IconPanel(
-				self, "wx.ART_FILE_SAVE", wx.ART_FILE_SAVE, self.icon_size, self.client, wx.ID_ANY
+				self,
+				"wx.ART_FILE_SAVE",
+				wx.ART_FILE_SAVE,
+				self.icon_size,
+				self.client,
+				wx.ID_ANY,
 				)
 		self.wx_ART_FILE_SAVE_AS = IconPanel(
-				self, "wx.ART_FILE_SAVE_AS", wx.ART_FILE_SAVE_AS, self.icon_size, self.client, wx.ID_ANY
+				self,
+				"wx.ART_FILE_SAVE_AS",
+				wx.ART_FILE_SAVE_AS,
+				self.icon_size,
+				self.client,
+				wx.ID_ANY,
 				)
 		self.wx_ART_DELETE = IconPanel(
-				self, "wx.ART_DELETE", wx.ART_DELETE, self.icon_size, self.client, wx.ID_ANY
+				self,
+				"wx.ART_DELETE",
+				wx.ART_DELETE,
+				self.icon_size,
+				self.client,
+				wx.ID_ANY,
 				)
 		self.wx_ART_COPY = IconPanel(self, "wx.ART_COPY", wx.ART_COPY, self.icon_size, self.client, wx.ID_ANY)
 		self.wx_ART_CUT = IconPanel(self, "wx.ART_CUT", wx.ART_CUT, self.icon_size, self.client, wx.ID_ANY)
@@ -171,13 +336,28 @@ class IconWall(wx.Frame):
 		self.wx_ART_QUIT = IconPanel(self, "wx.ART_QUIT", wx.ART_QUIT, self.icon_size, self.client, wx.ID_ANY)
 		self.wx_ART_FIND = IconPanel(self, "wx.ART_FIND", wx.ART_FIND, self.icon_size, self.client, wx.ID_ANY)
 		self.wx_ART_FIND_AND_REPLACE = IconPanel(
-				self, "wx.ART_FIND_AND_REPLACE", wx.ART_FIND_AND_REPLACE, self.icon_size, self.client, wx.ID_ANY
+				self,
+				"wx.ART_FIND_AND_REPLACE",
+				wx.ART_FIND_AND_REPLACE,
+				self.icon_size,
+				self.client,
+				wx.ID_ANY,
 				)
 		self.wx_ART_HARDDISK = IconPanel(
-				self, "wx.ART_HARDDISK", wx.ART_HARDDISK, self.icon_size, self.client, wx.ID_ANY
+				self,
+				"wx.ART_HARDDISK",
+				wx.ART_HARDDISK,
+				self.icon_size,
+				self.client,
+				wx.ID_ANY,
 				)
 		self.wx_ART_FLOPPY = IconPanel(
-				self, "wx.ART_FLOPPY", wx.ART_FLOPPY, self.icon_size, self.client, wx.ID_ANY
+				self,
+				"wx.ART_FLOPPY",
+				wx.ART_FLOPPY,
+				self.icon_size,
+				self.client,
+				wx.ID_ANY,
 				)
 		self.wx_ART_CDROM = IconPanel(self, "wx.ART_CDROM", wx.ART_CDROM, self.icon_size, self.client, wx.ID_ANY)
 
@@ -375,7 +555,7 @@ class IconPanel(wx.Panel):
 
 	def Refresh(self, eraseBackground=True, rect=None):
 		self.icon.SetBitmap(
-				wx.ArtProvider.GetBitmap(self.icon_id, self.art_client, wx.Size(self.icon_size, self.icon_size))
+				wx.ArtProvider.GetBitmap(self.icon_id, self.art_client, wx.Size(self.icon_size, self.icon_size)),
 				)
 		self.Layout()
 		wx.Panel.Refresh(self, eraseBackground, rect)

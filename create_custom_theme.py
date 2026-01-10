@@ -183,7 +183,7 @@ if __name__ == '__main__':
 	# test_random_icons(theme)
 	test.test_icon_theme(theme)
 
-'''
+''',
 		)
 
 # Create directory to store icons
@@ -203,7 +203,7 @@ tag = False
 
 [bumpversion:file:setup.py]
 
-"""
+""",
 		)
 
 # Create __pkginfo__.py
@@ -236,7 +236,7 @@ import sys
 
 sys.path.append(".")
 sys.path.append("..")
-'''
+''',
 				)
 		for theme in INHERIT_LIST:
 			fp.write(f'sys.path.append("../{theme.lower()}")\n')
@@ -252,7 +252,7 @@ scalable_directories = get_scalable_directories(theme_index_path)
 output_dir = "./{package_name}/{THEME_NAME}"
 dpis = {str(SVG_FROM_SRC_DPIS)}  # DPI multipliers to render at
 main(os.path.join('.', 'svg_src'), dpis, output_dir, scalable_directories)
-'''
+''',
 				)
 
 	if not (package_root / "svg_src").exists():
@@ -6979,7 +6979,7 @@ main(os.path.join('.', 'svg_src'), dpis, output_dir, scalable_directories)
     </g>
   </g>
 </svg>
-'''
+''',
 			)
 
 	# Create explanatory README.rst
@@ -6991,7 +6991,7 @@ There is an example icon in this folder from the gnome-icon-theme (GPLv3 License
 You can use this as the basis for your own icons or, more likely, you will be copying SVGs into this folder that follow the same layout as the example.
 
 Delete the example SVG and this file when you are finished.
-'''
+''',
 			)
 
 # Create COPYING file with a few TODOs
@@ -7006,7 +7006,7 @@ This work is licenced under the terms of the ...
 TODO: If the original project asked for attribution, give that here
 When attributing the artwork, using "ACME Project" is enough.
 Please link to http://www.example.org where available.
-"""
+""",
 		)
 
 # Create MANIFEST.in
@@ -7047,7 +7047,7 @@ And then the icons can be accessed through wx.ArtProvider:
 Any `FreeDesktop Icon Theme Specification <https://specifications.freedesktop.org/icon-naming-spec/icon-naming-spec-latest.html>`_ name can be used.
 
 Currently the `Client ID` is not used, so just pass `wx.ART_OTHER`.
-"""
+""",
 		)
 
 # Create requirements.txt
@@ -7135,11 +7135,11 @@ setup(
 		# 	]
 		)
 
-'''
+''',
 		)
 
 print("Some files have TODO items in them. Please finish those manually.")
 print(
 		"Please add a file to the package root called `LICENSE` or `LICENCE` that contains "
-		"the text of the license the UPSTREAM theme this package is based on is licensed under."
+		"the text of the license the UPSTREAM theme this package is based on is licensed under.",
 		)

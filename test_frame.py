@@ -74,7 +74,9 @@ class TestFrame(wx.Frame):
 
 	def load_icon(self):
 		icon = wx.ArtProvider.GetBitmap(
-				freedesktop_naming_spec_list[self.icon_idx], wx.ART_TOOLBAR, wx.Size(128, 128)
+				freedesktop_naming_spec_list[self.icon_idx],
+				wx.ART_TOOLBAR,
+				wx.Size(128, 128),
 				)
 		self.bitmap.SetBitmap(icon)
 

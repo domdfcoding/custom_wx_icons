@@ -130,7 +130,8 @@ def get_layer_ids_by_name(input_file, layer_name):
 
 	# Find all layers
 	all_layers = tree.findall(
-			'.//svg:g[@inkscape:groupmode="layer"]', namespaces={"svg": SVG, "inkscape": INKSCAPE}
+			'.//svg:g[@inkscape:groupmode="layer"]',
+			namespaces={"svg": SVG, "inkscape": INKSCAPE},
 			)
 
 	layer_ids = []
@@ -176,10 +177,12 @@ class IconBuilder:
 
 	@staticmethod
 	def start_inkscape():
-		process = subprocess.Popen(["inkscape", "--shell"],
-									bufsize=0,
-									stdin=subprocess.PIPE,
-									stdout=subprocess.PIPE)
+		process = subprocess.Popen(
+				["inkscape", "--shell"],
+				bufsize=0,
+				stdin=subprocess.PIPE,
+				stdout=subprocess.PIPE,
+				)
 		wait_for_prompt(process)
 		return process
 

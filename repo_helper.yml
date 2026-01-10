@@ -10,18 +10,11 @@ short_desc: 'Framework for creating freedesktop-esque icon themes for wxPython.'
 enable_tests: False
 enable_conda: False
 on_pypi: false
+use_whey: true
 
 exclude_files:
   - readme
-  - manifest
-  - setup
-  - pkginfo
-  - bumpversion
 
-python_deploy_version: 3.6
-
-# Versions to run tests for
 python_versions:
-  - '3.6'
   - '3.7'
   - '3.8'

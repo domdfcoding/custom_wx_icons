@@ -178,16 +178,10 @@ Several themes have been created using this framework:
 
 The individual themes contain instructions on how to use them in your program.
 
-.. toctree::
-	:maxdepth: 3
-	:caption: Documentation
-
-	docs
 
 .. sidebar-links::
 	:caption: Links
 	:github:
-	:pypi: custom_wx_icons
 
 
 .. start links

@@ -2,7 +2,7 @@
 #
 #  create_custom_theme.py
 """
-Script to create the boilerplate for a custom theme
+Script to create the boilerplate for a custom theme.
 """
 #
 #  Copyright 2020 Dominic Davis-Foster <dominic@davis-foster.co.uk>
@@ -27,6 +27,8 @@ Script to create the boilerplate for a custom theme
 import datetime
 import os
 import pathlib
+
+__all__ = ["maybe_make"]
 
 # TODO: Make the CAPS variables argparse arguments. For now just fill in manually.
 
@@ -213,7 +215,7 @@ if not (package_root / "__pkginfo__.py").exists():
 if BUILD_SVG_FROM_SRC:
 
 	# Create build_icons_from_src.py
-	with open(package_root / "build_icons_from_src.py", 'w') as fp:
+	with open(package_root / "build_icons_from_src.py", 'w', encoding="UTF-8") as fp:
 		fp.write(
 				f'''{shebang}
 #
@@ -242,7 +244,7 @@ sys.path.append("..")
 			fp.write(f'sys.path.append("../{theme.lower()}")\n')
 
 		fp.write(
-				f'''
+				f"""
 
 # this package
 from gnome_icon_builder import get_scalable_directories, main
@@ -252,7 +254,7 @@ scalable_directories = get_scalable_directories(theme_index_path)
 output_dir = "./{package_name}/{THEME_NAME}"
 dpis = {str(SVG_FROM_SRC_DPIS)}  # DPI multipliers to render at
 main(os.path.join('.', 'svg_src'), dpis, output_dir, scalable_directories)
-''',
+""",
 				)
 
 	if not (package_root / "svg_src").exists():
@@ -260,7 +262,7 @@ main(os.path.join('.', 'svg_src'), dpis, output_dir, scalable_directories)
 
 	# Create example svg
 	(package_root / "svg_src" / "example-delete-me.svg").write_text(
-			'''<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+			"""<?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!-- Created with Inkscape (http://www.inkscape.org/) -->
 
 <svg
@@ -6979,19 +6981,19 @@ main(os.path.join('.', 'svg_src'), dpis, output_dir, scalable_directories)
     </g>
   </g>
 </svg>
-''',
+""",
 			)
 
 	# Create explanatory README.rst
 	(package_root / "svg_src" / "README.rst").write_text(
-			'''In this directory you can put source SVGs that will be converted into minified SVGs and png images when building the package.
+			"""In this directory you can put source SVGs that will be converted into minified SVGs and png images when building the package.
 
 There is an example icon in this folder from the gnome-icon-theme (GPLv3 Licensed).
 
 You can use this as the basis for your own icons or, more likely, you will be copying SVGs into this folder that follow the same layout as the example.
 
 Delete the example SVG and this file when you are finished.
-''',
+""",
 			)
 
 # Create COPYING file with a few TODOs

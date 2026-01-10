@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 #
 """
-Function to chop up SVGs into individual sizes
+Function to chop up SVGs into individual sizes.
 
 Don't call this directly. Instead, use it in your build script.
 
@@ -59,7 +59,19 @@ import xml.sax
 
 # 3rd party
 from lxml import etree
-from scour import scour
+from scour import scour  # type: ignore[import-untyped]
+
+__all__ = [
+		"IconBuilder",
+		"ScourOptions",
+		"check_id_in_svg",
+		"get_layer_ids_by_name",
+		"get_scalable_directories",
+		"main",
+		"minify_svg",
+		"optimize_png",
+		"wait_for_prompt",
+		]
 
 OPTIPNG = "/usr/bin/optipng"
 
@@ -147,9 +159,9 @@ def get_layer_ids_by_name(input_file, layer_name):
 	return layer_ids
 
 
-def check_id_in_svg(input_file, id):
+def check_id_in_svg(input_file, id):  # noqa: A002  # pylint: disable=redefined-builtin
 	tree = etree.parse(str(input_file))
-	results = tree.findall(f".//svg:g[@id=\"{id}\"]", namespaces={"svg": SVG})
+	results = tree.findall(f'.//svg:g[@id="{id}"]', namespaces={"svg": SVG})
 	return bool(len(results))
 
 
@@ -160,13 +172,21 @@ def minify_svg(input_file, output_file):
 	# use scour to remove redundant stuff and then write to file
 	svg_string = scour.scourString(svg_string, ScourOptions())
 
-	with open(output_file, 'w') as fp:
+	with open(output_file, 'w', encoding="UTF-8") as fp:
 		fp.write(svg_string)
 
 
 class IconBuilder:
 
-	def __init__(self, infile, outfile, icon_name, dpi, id, scalable):
+	def __init__(
+			self,
+			infile,
+			outfile,
+			icon_name,
+			dpi,
+			id,  # noqa: A002  # pylint: disable=redefined-builtin
+			scalable,
+			):
 		self.inkscape_process = None
 
 		if scalable:
@@ -231,7 +251,7 @@ class IconBuilder:
 		tree = etree.parse(str(input_file))
 
 		for layer_id in icon_layer_ids:
-			layer = tree.findall(f".//svg:g[@id=\"{layer_id}\"]", namespaces={"svg": SVG})[0]
+			layer = tree.findall(f'.//svg:g[@id="{layer_id}"]', namespaces={"svg": SVG})[0]
 			if layer.get(f"{{{INKSCAPE}}}label") == icon_name:
 				icon_layer_ids = [layer_id]
 				break
@@ -293,11 +313,16 @@ class IconBuilder:
 
 		return 0
 
-	def make_svg_from_source(self, input_file, output_file, icon_name, dpi, id):
+	def make_svg_from_source(
+			self,
+			input_file,
+			output_file,
+			icon_name,
+			dpi,
+			id,  # noqa: A002  # pylint: disable=redefined-builtin
+			):
 		with tempfile.TemporaryDirectory() as tmp_dir:
-			tmp_dir = pathlib.Path(tmp_dir)
-
-			tmp_svg = tmp_dir / f"{icon_name}.svg"
+			tmp_svg = pathlib.Path(tmp_dir) / f"{icon_name}.svg"
 
 			hires_layer_ids = self.select_layer(input_file, tmp_svg, icon_name)
 			if not tmp_svg.exists():
@@ -310,7 +335,15 @@ class IconBuilder:
 			print(255, tmp_svg)
 			minify_svg(tmp_svg, output_file)
 
-	def render_icon(self, infile, outfile, icon_name, dpi, id, scalable):
+	def render_icon(
+			self,
+			infile,
+			outfile,
+			icon_name,
+			dpi,
+			id,  # noqa: A002  # pylint: disable=redefined-builtin
+			scalable,
+			):
 		if scalable:
 			self.make_svg_from_source(infile, outfile, icon_name, dpi, id)
 		else:
@@ -327,7 +360,12 @@ def main(source_dir, dpis, output_dir, scalable_directories):
 		OTHER = 3
 		TEXT = 4
 
-		def __init__(self, path, force=False, filter=None):
+		def __init__(
+				self,
+				path,
+				force=False,
+				filter=None,  # noqa: A002  # pylint: disable=redefined-builtin
+				):
 			self.stack = [self.ROOT]
 			self.inside = [self.ROOT]
 			self.path = path
@@ -388,7 +426,7 @@ def main(source_dir, dpis, output_dir, scalable_directories):
 					self.context = self.chars
 				elif self.text == "icon-name":
 					self.icon_name = self.chars
-				self.text = None
+				self.text = None  # type: ignore[assignment]
 			elif stacked == self.LAYER:
 				assert self.icon_name
 				assert self.context
@@ -404,7 +442,7 @@ def main(source_dir, dpis, output_dir, scalable_directories):
 					for dpi_factor in dpis:
 						width = int(float(rect["width"]))
 						height = int(float(rect["height"]))
-						id = rect["id"]
+						rect_id = rect["id"]
 						dpi = 96 * dpi_factor
 
 						size_str = f"{width}x{height}"
@@ -434,7 +472,7 @@ def main(source_dir, dpis, output_dir, scalable_directories):
 						if self.force or not os.path.exists(outfile):
 
 							try:
-								IconBuilder(self.path, outfile, self.icon_name, dpi, id, scalable)
+								IconBuilder(self.path, outfile, self.icon_name, dpi, rect_id, scalable)
 							except OSError:
 								print(f"Unable to process {self.path}.")
 								continue
@@ -442,7 +480,7 @@ def main(source_dir, dpis, output_dir, scalable_directories):
 							stat_in = os.stat(self.path)
 							stat_out = os.stat(outfile)
 							if stat_in.st_mtime > stat_out.st_mtime:
-								IconBuilder(self.path, outfile, self.icon_name, dpi, id, scalable)
+								IconBuilder(self.path, outfile, self.icon_name, dpi, rect_id, scalable)
 							else:
 								sys.stdout.write('-')
 						sys.stdout.flush()
@@ -455,13 +493,14 @@ def main(source_dir, dpis, output_dir, scalable_directories):
 	if len(sys.argv) == 1:
 		if not os.path.exists(output_dir):
 			os.mkdir(output_dir)
-		open(os.path.join(output_dir, "__init__.py"), 'w').close()
+		open(os.path.join(output_dir, "__init__.py"), 'w', encoding="UTF-8").close()
 		print("Rendering from SVGs in", source_dir)
 		for file in os.listdir(source_dir):
 			if file[-4:] == ".svg":
 				file = os.path.join(source_dir, file)
 				handler = ContentHandler(file)
-				xml.sax.parse(open(file), handler)
+				with open(file, encoding="UTF-8") as fp:
+					xml.sax.parse(fp, handler)
 	else:
 		file = os.path.join(source_dir, sys.argv[1] + ".svg")
 		if len(sys.argv) > 2:
@@ -470,7 +509,8 @@ def main(source_dir, dpis, output_dir, scalable_directories):
 			icons = None
 		if os.path.exists(os.path.join(file)):
 			handler = ContentHandler(file, True, filter=icons)
-			xml.sax.parse(open(file), handler)
+			with open(file, encoding="UTF-8") as fp:
+				xml.sax.parse(fp, handler)
 		else:
 			print("Error: No such file", file)
 			sys.exit(1)

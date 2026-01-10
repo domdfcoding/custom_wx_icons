@@ -2,7 +2,7 @@
 #
 #  icon_wall.py
 """
-Frame to show all of the stock art resources
+Frame to show all of the stock art resources.
 """
 #
 #  Copyright 2020 Dominic Davis-Foster <dominic@davis-foster.co.uk>
@@ -26,7 +26,9 @@ Frame to show all of the stock art resources
 #
 
 # 3rd party
-import wx
+import wx  # type: ignore[import-not-found]  # nodep
+
+__all__ = ["IconPanel", "IconWall", "IconWallApp"]
 
 # begin wxGlade: dependencies
 # end wxGlade

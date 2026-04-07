@@ -7,4 +7,4 @@ License
 .. license-info:: LGPL-3.0
 
 .. license::
-	:py: custom_wx_icons
+	:py: custom-wx-icons

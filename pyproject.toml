@@ -3,7 +3,7 @@ requires = [ "whey",]
 build-backend = "whey"
 
 [project]
-name = "custom_wx_icons"
+name = "custom-wx-icons"
 version = "0.0.1"
 description = "Framework for creating freedesktop-esque icon themes for wxPython."
 readme = "README.rst"
@@ -33,7 +33,8 @@ base-classifiers = []
 python-versions = [ "3.7", "3.8",]
 python-implementations = [ "CPython",]
 platforms = [ "Windows", "macOS", "Linux",]
-license-key = "LGPL-3.0-or-later"
+license-key = "LGPLv3+"
+package = "custom_wx_icons"
 
 [tool.importcheck]
 
